@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".Main2Activity"
+    tools:context=".MainActivity"
     tools:showIn="@layout/activity_main2">
 
     <android.support.design.widget.TextInputLayout
@@ -26,20 +26,39 @@
             android:id="@+id/editText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Введите имя:" />
+            android:hint="@string/hint" />
     </android.support.design.widget.TextInputLayout>
 
     <Button
         android:id="@+id/button"
-        android:theme="@style/AppTheme"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
-        android:text= "@string/enter"
+        android:backgroundTint="@color/colorAccent"
         android:onClick="onClickEnter"
+        android:text="@string/enter"
+        android:theme="@style/AppTheme"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.446" />
+
+    <Button
+        android:id="@+id/button3"
+        style="?attr/borderlessButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:onClick="onClickExit"
+        android:text="@string/exit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintVertical_bias="0.164" />
 
 
 </android.support.constraint.ConstraintLayout>
