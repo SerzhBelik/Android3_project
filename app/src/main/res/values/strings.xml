@@ -11,7 +11,7 @@
     <string name="exit">Exit</string>
     <string name="hint">Enter your name</string>
     <string name="title_activity_second">SecondActivity</string>
-    <string name="fab_behavior_name">com.example.belikov.andr3_project.FAB_Hide_on_Scroll</string>
+    <string name="fab_behavior_name">com.example.belikov.andr3_project.FABHideOnScroll</string>
     <string name="big_text">Здесь будет большой текст
     Здесь будет большой текст
     Здесь будет большой текст
