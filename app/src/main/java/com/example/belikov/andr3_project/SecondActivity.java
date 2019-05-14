@@ -35,9 +35,13 @@ public class SecondActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
-
+        initGUI();
         initRecyclerView();
 
+
+    }
+
+    private void initGUI() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
