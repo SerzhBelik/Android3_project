@@ -104,17 +104,17 @@ public class SecondActivity extends AppCompatActivity
             case R.id.nav_fruits:
                 toast = Toast.makeText(this, "fruits", Toast.LENGTH_SHORT);
                 toast.show();
-                imageView.setImageResource(R.drawable.fruits);
+                setAdapter("fruits");
                 break;
             case R.id.nav_vegetables:
                 toast = Toast.makeText(this, "vegetables", Toast.LENGTH_SHORT);
                 toast.show();
-                imageView.setImageResource(R.drawable.vegetables);
+                setAdapter("vegetables");
                 break;
             case R.id.nav_nature:
                toast = Toast.makeText(this, "nature", Toast.LENGTH_SHORT);
                 toast.show();
-                imageView.setImageResource(R.drawable.nature);
+                setAdapter("nature");
                 break;
             case R.id.nav_share:
                 toast = Toast.makeText(this, "share", Toast.LENGTH_SHORT);
@@ -135,7 +135,23 @@ public class SecondActivity extends AppCompatActivity
         layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
         data = new Data();
-        myAdapter = new MyAdapter(this, data.getList());
+        setAdapter("fruits");
+
+    }
+
+    private void setAdapter(String type) {
+        switch (type){
+            case "fruits":
+                myAdapter = new MyAdapter(this, data.getFruitList(), data.getFruit());
+                break;
+            case "vegetables":
+                myAdapter = new MyAdapter(this, data.getVegetablesList(), data.getVegetables());
+                break;
+            case "nature":
+                myAdapter = new MyAdapter(this, data.getNatureList(), data.getNature());
+                break;
+        }
+
         recyclerView.setAdapter(myAdapter);
     }
 }

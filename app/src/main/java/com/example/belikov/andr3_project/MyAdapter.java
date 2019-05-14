@@ -15,10 +15,12 @@ class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     private Context context;
     private List<String> list;
+    private int[] picArray;
 
-    public MyAdapter(Context context, List<String> list){
+    public MyAdapter(Context context, List<String> list, int[] picArray){
         this.context = context;
         this.list = list;
+        this.picArray = picArray;
     }
 
     @NonNull
@@ -50,22 +52,24 @@ class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             imageView = itemView.findViewById(R.id.image_view);
         }
 
-        public void bind(int i) {
-            textView.setText(list.get(i%4));
-            switch (i%4){
-                case 0:
-                    imageView.setImageResource(R.drawable.fruit1);
-                    break;
-                case 1:
-                    imageView.setImageResource(R.drawable.fruit2);
-                    break;
-                case 2:
-                    imageView.setImageResource(R.drawable.fruit3);
-                    break;
-                case 3:
-                    imageView.setImageResource(R.drawable.fruit4);
-                    break;
-            }
+        public void bind(int position) {
+            int i = position%4;
+            textView.setText(list.get(i));
+            imageView.setImageResource(picArray[i]);
+//            switch (i){
+//                case 0:
+//                    imageView.setImageResource(picArray[i]);
+//                    break;
+//                case 1:
+//                    imageView.setImageResource(R.drawable.fruit2);
+//                    break;
+//                case 2:
+//                    imageView.setImageResource(R.drawable.fruit3);
+//                    break;
+//                case 3:
+//                    imageView.setImageResource(R.drawable.fruit4);
+//                    break;
+//            }
         }
     }
 }
