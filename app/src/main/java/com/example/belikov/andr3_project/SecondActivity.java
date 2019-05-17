@@ -1,5 +1,6 @@
 package com.example.belikov.andr3_project;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -108,7 +109,9 @@ public class SecondActivity extends AppCompatActivity
             case R.id.nav_fruits:
                 toast = Toast.makeText(this, "fruits", Toast.LENGTH_SHORT);
                 toast.show();
-                setAdapter("fruits");
+//                setAdapter("fruits");
+                Intent intent = new Intent(this, TabActivity.class);
+                startActivity(intent);
                 break;
             case R.id.nav_vegetables:
                 toast = Toast.makeText(this, "vegetables", Toast.LENGTH_SHORT);
