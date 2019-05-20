@@ -36,8 +36,6 @@ public class TabActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_tab2);
 
-
-
         Fragment fragment1 = Fragment1.newInstance(null);
         Fragment fragment2 = Fragment2.newInstance(null);
         Fragment fragment3 = Fragment3.newInstance(null);
