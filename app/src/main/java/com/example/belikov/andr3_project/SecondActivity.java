@@ -16,6 +16,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 public class SecondActivity extends AppCompatActivity
@@ -32,17 +33,38 @@ public class SecondActivity extends AppCompatActivity
     private Data data;
     private MyAdapter myAdapter;
 
+    public static final String THEME = "THEME";
+    private int themeNumber =0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_second);
+
+        if (savedInstanceState != null){
+            themeNumber = savedInstanceState.getInt(THEME);
+
+            switch (themeNumber){
+                case 0:
+                    setTheme(R.style.AppTheme_NoActionBar);
+                    break;
+                case 1:
+                    setTheme(R.style.AppTheme_NoActionBar_Theme1);
+                    break;
+                case 2:
+                    setTheme(R.style.AppTheme_NoActionBar_Theme2);
+                    break;
+            }
+        }
         initGUI();
         initRecyclerView();
+
+
 
 
     }
 
     private void initGUI() {
+        setContentView(R.layout.activity_second);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -93,11 +115,26 @@ public class SecondActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+
+                themeNumber++;
+                themeNumber = themeNumber%3;
+
+                Toast toast = Toast.makeText(this, "change theme", Toast.LENGTH_SHORT);
+                toast.show();
+                recreate();
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
+
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(THEME, themeNumber);
+    }
+
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -109,8 +146,8 @@ public class SecondActivity extends AppCompatActivity
             case R.id.nav_fruits:
                 toast = Toast.makeText(this, "fruits", Toast.LENGTH_SHORT);
                 toast.show();
-//                setAdapter("fruits");
                 Intent intent = new Intent(this, TabActivity.class);
+                intent.putExtra(THEME, themeNumber);
                 startActivity(intent);
                 break;
             case R.id.nav_vegetables:
